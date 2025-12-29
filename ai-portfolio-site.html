@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Consulting Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2563eb;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Section Styles */
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: #1e293b;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            color: #475569;
+        }
+
+        .about-image {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 400px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        /* Services Section */
+        #services {
+            background: #f8fafc;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        .service-card h3 {
+            color: #2563eb;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .service-card p {
+            color: #64748b;
+        }
+
+        /* Case Studies Section */
+        .case-study {
+            background: white;
+            border-left: 4px solid #2563eb;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .case-study h3 {
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+
+        .case-study .company {
+            color: #2563eb;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .case-study p {
+            color: #475569;
+            margin-bottom: 0.5rem;
+        }
+
+        .case-study .result {
+            background: #f0f9ff;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+            font-weight: 500;
+            color: #0369a1;
+        }
+
+        /* Thought Leadership Section */
+        #thought-leadership {
+            background: #f8fafc;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .article-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .article-image {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.9rem;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .article-content {
+            padding: 1.5rem;
+        }
+
+        .article-content h3 {
+            margin-bottom: 0.5rem;
+            color: #1e293b;
+        }
+
+        .article-content p {
+            color: #64748b;
+            margin-bottom: 1rem;
+        }
+
+        .read-more {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #1e293b;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: #1e293b;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 3rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                justify-content: center;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">AI Consulting</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#case-studies">Case Studies</a></li>
+                <li><a href="#thought-leadership">Insights</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <h1>Transform Your Business with AI</h1>
+        <p>Strategic AI consulting for forward-thinking organizations</p>
+        <a href="#contact" class="cta-button">Start Your AI Journey</a>
+    </section>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>With over a decade of experience in artificial intelligence and machine learning, I help organizations navigate the complex landscape of AI transformation.</p>
+                <p>My approach combines deep technical expertise with strategic business acumen, ensuring that AI implementations deliver measurable ROI and sustainable competitive advantages.</p>
+                <p>I've worked with Fortune 500 companies and innovative startups across healthcare, finance, retail, and technology sectors, delivering solutions that drive real business impact.</p>
+            </div>
+            <div class="about-image">
+                [Professional Photo Placeholder]
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <h2>Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>AI Strategy & Roadmap</h3>
+                <p>Develop comprehensive AI strategies aligned with your business objectives. I'll help you identify high-impact use cases and create a phased implementation roadmap.</p>
+            </div>
+            <div class="service-card">
+                <h3>ML Model Development</h3>
+                <p>Design and deploy custom machine learning models tailored to your specific needs, from predictive analytics to computer vision and NLP solutions.</p>
+            </div>
+            <div class="service-card">
+                <h3>AI Integration</h3>
+                <p>Seamlessly integrate AI capabilities into your existing systems and workflows, ensuring smooth adoption and maximum value extraction.</p>
+            </div>
+            <div class="service-card">
+                <h3>Team Training & Upskilling</h3>
+                <p>Empower your team with the knowledge and skills needed to work effectively with AI technologies through customized training programs.</p>
+            </div>
+            <div class="service-card">
+                <h3>AI Ethics & Governance</h3>
+                <p>Establish responsible AI practices with frameworks for ethical AI development, bias mitigation, and regulatory compliance.</p>
+            </div>
+            <div class="service-card">
+                <h3>Performance Optimization</h3>
+                <p>Optimize existing AI systems for better accuracy, efficiency, and scalability while reducing operational costs.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="case-studies">
+        <h2>Case Studies</h2>
+        
+        <div class="case-study">
+            <h3>Predictive Maintenance for Manufacturing</h3>
+            <div class="company">Global Manufacturing Corporation</div>
+            <p><strong>Challenge:</strong> A leading manufacturer faced frequent unexpected equipment failures, resulting in costly downtime and production delays.</p>
+            <p><strong>Solution:</strong> Implemented an AI-powered predictive maintenance system using IoT sensors and machine learning algorithms to forecast equipment failures before they occur.</p>
+            <div class="result">Result: 45% reduction in unplanned downtime and $3.2M annual savings</div>
+        </div>
+
+        <div class="case-study">
+            <h3>Customer Churn Prediction</h3>
+            <div class="company">SaaS Technology Company</div>
+            <p><strong>Challenge:</strong> A rapidly growing SaaS company struggled with customer retention and needed to identify at-risk accounts early.</p>
+            <p><strong>Solution:</strong> Developed a sophisticated churn prediction model analyzing user behavior, engagement patterns, and support interactions to identify customers likely to cancel.</p>
+            <div class="result">Result: 32% improvement in retention rate and 2.5x ROI within first year</div>
+        </div>
+
+        <div class="case-study">
+            <h3>Intelligent Document Processing</h3>
+            <div class="company">Financial Services Firm</div>
+            <p><strong>Challenge:</strong> Manual processing of thousands of financial documents was time-consuming, error-prone, and expensive.</p>
+            <p><strong>Solution:</strong> Created an AI system using natural language processing and computer vision to automatically extract, classify, and validate information from diverse document types.</p>
+            <div class="result">Result: 85% reduction in processing time and 99.2% accuracy rate</div>
+        </div>
+    </section>
+
+    <section id="thought-leadership">
+        <h2>Thought Leadership</h2>
+        <div class="articles-grid">
+            <div class="article-card">
+                <div class="article-image">[Article Image Placeholder]</div>
+                <div class="article-content">
+                    <h3>The Future of Generative AI in Enterprise</h3>
+                    <p>Exploring how large language models are transforming business operations and customer experiences across industries.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </div>
+            <div class="article-card">
+                <div class="article-image">[Article Image Placeholder]</div>
+                <div class="article-content">
+                    <h3>Building Responsible AI Systems</h3>
+                    <p>A comprehensive guide to implementing ethical AI practices and ensuring fairness, transparency, and accountability.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </div>
+            <div class="article-card">
+                <div class="article-image">[Article Image Placeholder]</div>
+                <div class="article-content">
+                    <h3>ROI Metrics for AI Projects</h3>
+                    <p>How to measure and demonstrate the business value of your AI investments with actionable frameworks and case studies.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Let's Work Together</h2>
+        <div class="contact-content">
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="company">Company</label>
+                    <input type="text" id="company" name="company">
+                </div>
+                <div class="form-group">
+                    <label for="message">Tell me about your project</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 AI Consulting. All rights reserved.</p>
+    </footer>
+</body>
+</html>
